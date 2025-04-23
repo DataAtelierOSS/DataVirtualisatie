@@ -1,0 +1,11 @@
+{
+  "s3": {
+    "type": "file",
+    "enabled": true,
+    "connection": "s3a://your-bucket-name/",
+    "config": {
+      "fs.s3a.access.key": "${AWS_ACCESS_KEY_ID}",
+      "fs.s3a.secret.key": "${AWS_SECRET_ACCESS_KEY}"
+    }
+  }
+}

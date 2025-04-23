@@ -9,4 +9,5 @@ Om deze datasets effectief te koppelen aan het GGM-model, is het belangrijk om d
 - Overheid: https://data.overheid.nl/dataset/1085-onderwijs--uitgaven-aan-onderwijs-en-cbs-oeso-indicatoren
 ## Mappen
 - `queries/`: SQL-bestanden voor analyses of datavraagstukken.
+- `cbs/`: SQL-bestanden voor analyses of datavraagstukken gebruik makend van openbare bronnen.
 - `scripts/`: SQL-scripts voor het aanmaken van views of voorbereidingen.

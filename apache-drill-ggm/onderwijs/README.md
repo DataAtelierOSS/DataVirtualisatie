@@ -1,6 +1,6 @@
 # Onderwijs
 
-Deze map bevat queries en scripts die betrekking hebben op het GGM-domein: **Onderwijs**.
+Deze map bevat queries en scripts die betrekking hebben op het GGM-domein: **Onderwijs**. Om gebruik te kunnen maken van een query dien je eerst de .sql code van het script als basis in je query te verwerken. Daarna kun je de queries hieronder plakken om zo tot resultaten te komen. 
 
 Om deze datasets effectief te koppelen aan het GGM-model, is het belangrijk om de gemeenschappelijke kolommen of sleutelvelden te identificeren die als verbindingspunten kunnen dienen. Veelvoorkomende sleutelvelden zijn bijvoorbeeld BRIN-nummers (Basisregistratie Instellingen), vestigingscodes of gemeentecodes. Door deze gemeenschappelijke velden te gebruiken, kunt u de datasets integreren en zo een uitgebreide analyse uitvoeren die aansluit bij het GGM-model.
 

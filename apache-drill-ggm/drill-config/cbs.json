@@ -1,0 +1,29 @@
+{
+  "name" : "cbs",
+  "config" : {
+    "type" : "http",
+    "connections" : {
+      "cbs" : {
+        "url" : "https://opendata.cbs.nl/ODataApi/odata/",
+        "requireTail" : true,
+        "method" : "GET",
+        "dataPath" : "value",
+        "authType" : "none",
+        "inputType" : "json",
+        "xmlDataLevel" : 1,
+        "postParameterLocation" : "QUERY_STRING",
+        "verifySSLCert" : true,
+        "paginator" : {
+          "limitParam" : "$top",
+          "offsetParam" : "$skip",
+          "pageSize" : 1000,
+          "method" : "OFFSET"
+        }
+      }
+    },
+    "retryDelay" : 1000,
+    "proxyType" : "direct",
+    "authMode" : "SHARED_USER",
+    "enabled" : true
+  }
+}

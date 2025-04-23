@@ -6,7 +6,7 @@ Om deze datasets effectief te koppelen aan het GGM-model, is het belangrijk om d
 
 - Meer info: https://www.gemeentelijkgegevensmodel.nl/v2.2.0/domeinen/onderwijs/
 - Openbare bronnen: https://opendata.cbs.nl/statline/#/CBS/nl/dataset/37220/table?fromstatweb
-  -Overheid: https://data.overheid.nl/dataset/1085-onderwijs--uitgaven-aan-onderwijs-en-cbs-oeso-indicatoren
+- Overheid: https://data.overheid.nl/dataset/1085-onderwijs--uitgaven-aan-onderwijs-en-cbs-oeso-indicatoren
 ## Mappen
 - `queries/`: SQL-bestanden voor analyses of datavraagstukken.
 - `scripts/`: SQL-scripts voor het aanmaken van views of voorbereidingen.

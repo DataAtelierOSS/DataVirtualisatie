@@ -1,0 +1,30 @@
+{
+  "type": "http",
+  "connections": {
+    "afas": {
+      "url": "JOUW AFAS ENDPOINT",
+      "requireTail": true,
+      "method": "GET",
+      "headers": {
+        "Authorization": "<token><version>1</version><data>JOUWTOKEN</data></token>",
+        "Accept": "application/json"
+      },
+      "dataPath": "rows",
+      "authType": "none",
+      "inputType": "json",
+      "xmlDataLevel": 1,
+      "postParameterLocation": "QUERY_STRING",
+      "verifySSLCert": true,
+      "paginator": {
+        "limitParam": "$top",
+        "offsetParam": "$skip",
+        "pageSize": 1000,
+        "method": "OFFSET"
+      }
+    }
+  },
+  "retryDelay": 1000,
+  "proxyType": "direct",
+  "authMode": "SHARED_USER",
+  "enabled": true
+}

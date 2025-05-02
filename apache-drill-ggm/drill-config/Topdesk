@@ -1,0 +1,31 @@
+{
+  "type": "http",
+  "connections": {
+    "topdesk": {
+      "url": "EIGEN API URL",
+      "requireTail": true,
+      "method": "GET",
+      "headers": {
+        "Accept": "application/json"
+      },
+      "dataPath": "value",
+      "authType": "basic",
+      "inputType": "json",
+      "xmlDataLevel": 1,
+      "postParameterLocation": "QUERY_STRING",
+      "verifySSLCert": false,
+      "paginator": {
+        "limitParam": "$top",
+        "offsetParam": "$skip",
+        "pageSize": 1000,
+        "method": "OFFSET"
+      },
+      "userName": "Eigen gebruikersnaam",
+      "password": "Eigen wachtwoord"
+    }
+  },
+  "retryDelay": 1000,
+  "proxyType": "direct",
+  "authMode": "SHARED_USER",
+  "enabled": true
+}

@@ -1,0 +1,26 @@
+{
+  "type": "file",
+  "enabled": true,
+  "connection": "file:///tmp/",
+  "workspaces": {
+    "root": {
+      "location": "/tmp",
+      "writable": false,
+      "defaultInputFormat": null
+    },
+    "tmp": {
+      "location": "/tmp",
+      "writable": true,
+      "defaultInputFormat": "parquet"
+    }
+  },
+  "formats": {
+    "json": { "type": "json" },
+    "csv": {
+      "type": "text",
+      "extensions": ["csv"],
+      "delimiter": ","
+    },
+    "parquet": { "type": "parquet" }
+  }
+}

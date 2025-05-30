@@ -5,30 +5,6 @@
 -- Dataset: Lokale LBA-data (Drill views)
 -- Laatste update: 2025-04-23
 
-WITH laatste_inschrijving AS (
-  SELECT 
-    PERSOON_LBAID,
-    MAX(OPLEIDING_EINDDATUM) AS laatste_inschrijving,
-    MAX(OPLEIDING_NIVEAU) AS laatst_opleiding_niveau,
-    MAX(OPLEIDING_UITSTROOM) AS uitstroomcode
-  FROM T_LBA_SCHOOLLOOPBAAN_VW
-  GROUP BY PERSOON_LBAID
-),
-verzuim_signaal AS (
-  SELECT 
-    PERSOON_LBAID,
-    COUNT(*) AS verzuimmomenten
-  FROM T_LBA_VERZUIM_VW
-  GROUP BY PERSOON_LBAID
-),
-melding_signaal AS (
-  SELECT 
-    PERSOON_LBAID,
-    COUNT(*) AS meldingen
-  FROM T_LBA_MELDING_VW
-  GROUP BY PERSOON_LBAID
-)
-
 SELECT 
   li.PERSOON_LBAID,
   li.laatste_inschrijving,

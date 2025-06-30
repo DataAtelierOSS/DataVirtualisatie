@@ -1,5 +1,5 @@
 WITH cte_applicaties AS (
-  
+
   SELECT 
     CAST(S.id AS VARCHAR) AS id,
     COALESCE(
@@ -13,7 +13,6 @@ WITH cte_applicaties AS (
 
   UNION ALL
 
- 
   SELECT 
     CAST(id AS VARCHAR) AS id,
     CAST(objectid AS VARCHAR) AS applicatie
@@ -69,7 +68,7 @@ WITH cte_applicaties AS (
   LEFT JOIN topdesk.`IncidentDetails` B 
     ON A.id = CAST(B.id AS VARCHAR)
 
-  
+
   LEFT JOIN cte_applicaties Z 
     ON CAST(B.assetid AS VARCHAR) = Z.id 
 

@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW dfs.tmp.incidenten_basis_view AS
+CREATE TABLE dfs.tmp.incidenten_basis AS
 
 WITH cte_applicaties AS (
   SELECT 

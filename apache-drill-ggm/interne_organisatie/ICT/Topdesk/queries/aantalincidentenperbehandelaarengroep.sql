@@ -1,3 +1,5 @@
+--dfs.tmp.incidenten_basis_v2 voor het model moet je de from hierin veranderen!
+
 SELECT
   behandelaarsgroep,
   behandelaar,

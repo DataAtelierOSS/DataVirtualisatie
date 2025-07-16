@@ -1,14 +1,17 @@
 WITH cte_applicaties AS (
   SELECT 
     CAST(S.id AS VARCHAR) AS id,
-    COALESCE(
-      CAST(D.application AS VARCHAR),
-      CAST(S.name AS VARCHAR),
-      CAST(S.objectid AS VARCHAR)
+    MIN(
+      COALESCE(
+        CAST(D.application AS VARCHAR),
+        CAST(S.name AS VARCHAR),
+        CAST(S.objectid AS VARCHAR)
+      )
     ) AS applicatie
   FROM topdesk.`AssetSoftwareList` S
   LEFT JOIN topdesk.`AssetSoftwareDetailList` D
     ON CAST(S.id AS VARCHAR) = CAST(D.id AS VARCHAR)
+  GROUP BY S.id
 
   UNION ALL
 

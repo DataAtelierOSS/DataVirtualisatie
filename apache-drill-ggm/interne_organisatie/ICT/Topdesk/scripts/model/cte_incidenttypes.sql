@@ -6,6 +6,6 @@ SELECT
   CAST(d.assetid AS VARCHAR) AS assetid,
   CAST(t.id AS VARCHAR) AS incidenttype_id,
   t.name AS incidenttype_name
-FROM dfs.tmp.incidentdetails d
-LEFT JOIN dfs.tmp.incidenttypes t
+FROM topdesk.topdesk.`IncidentDetails` d
+LEFT JOIN topdesk.topdesk.`IncidentTypes` t
   ON CAST(d.typeId AS VARCHAR) = CAST(t.id AS VARCHAR);

@@ -18,9 +18,6 @@ SELECT
   COALESCE(C.category_name, 'Onbekende categorie') AS categorie,
   COALESCE(C.subcategory_name, 'Onbekende subcategorie') AS subcategorie,
 
-  -- Status
-  COALESCE(G.name, 'Onbekend') AS status,
-
   -- Ontvangst & type melding
   COALESCE(H.name, 'Onbekend') AS ontvangst_via,
   COALESCE(B.incidenttype_name, 'Onbekend') AS type_melding,
@@ -46,10 +43,6 @@ LEFT JOIN dfs.tmp.cte_operatoren O
 LEFT JOIN dfs.tmp.cte_categories C 
   ON CAST(A.category_id AS VARCHAR) = C.category_id
  AND CAST(A.subcategory_id AS VARCHAR) = C.subcategory_id
-
--- Status
-LEFT JOIN dfs.tmp.incidentprocessingstatuses G 
-  ON CAST(A.status_id AS VARCHAR) = CAST(G.id AS VARCHAR)
 
 -- EntryTypes
 LEFT JOIN dfs.tmp.entrytypes H 

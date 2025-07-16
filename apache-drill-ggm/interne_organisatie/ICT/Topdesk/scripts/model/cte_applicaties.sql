@@ -1,18 +1,22 @@
 CREATE TABLE dfs.tmp.cte_applicaties AS
 SELECT 
-  CAST(asl.id AS VARCHAR) AS id,
-  COALESCE(
-    CAST(asd.application AS VARCHAR),
-    CAST(asl.name AS VARCHAR),
-    CAST(asl.objectid AS VARCHAR)
+  CAST(S.id AS VARCHAR) AS id,
+  MIN(
+    COALESCE(
+      CAST(D.application AS VARCHAR),
+      CAST(S.name AS VARCHAR),
+      CAST(S.objectid AS VARCHAR)
+    )
   ) AS applicatie
-FROM dfs.tmp.assetsoftwarelist asl
-LEFT JOIN dfs.tmp.assetsoftwaredetaillist asd
-  ON CAST(asl.id AS VARCHAR) = CAST(asd.id AS VARCHAR)
+FROM topdesk.`AssetSoftwareList` S
+LEFT JOIN topdesk.`AssetSoftwareDetailList` D
+  ON CAST(S.id AS VARCHAR) = CAST(D.id AS VARCHAR)
+GROUP BY S.id
 
 UNION ALL
 
 SELECT 
   CAST(id AS VARCHAR) AS id,
   CAST(objectid AS VARCHAR) AS applicatie
-FROM dfs.tmp.assetserverlist;
+FROM topdesk.`AssetServerList`
+)

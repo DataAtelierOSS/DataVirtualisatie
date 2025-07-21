@@ -37,7 +37,7 @@ LEFT JOIN dfs.tmp.cte_applicaties Z
 
 -- Operators + OperatorGroups
 LEFT JOIN dfs.tmp.cte_operatoren O 
-  ON CAST(A.operator_id AS VARCHAR) = O.operator_id
+  ON CAST(A.operatorid AS VARCHAR) = O.operatorid
 
 -- Categories + Subcategories
 LEFT JOIN dfs.tmp.cte_categories C 

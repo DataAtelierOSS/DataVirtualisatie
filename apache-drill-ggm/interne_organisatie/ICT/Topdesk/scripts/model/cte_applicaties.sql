@@ -1,22 +1,49 @@
 CREATE TABLE dfs.tmp.cte_applicaties AS
-(SELECT 
-  CAST(S.id AS VARCHAR) AS id,
+WITH
+  filtered_software AS (
+    SELECT
+      CAST(id AS VARCHAR) AS id,
+      CAST(name AS VARCHAR) AS name,
+      CAST(objectid AS VARCHAR) AS objectid,
+      CAST(REPLACE(SUBSTR(creationDate, 1, 19), 'T', ' ') AS TIMESTAMP) AS parsed_creationDate
+    FROM topdesk.topdesk.`AssetSoftwareList`
+    WHERE CAST(REPLACE(SUBSTR(creationDate, 1, 19), 'T', ' ') AS TIMESTAMP) >= TIMESTAMP '2025-01-01 00:00:00'
+  ),
+
+  filtered_detail AS (
+    SELECT
+      CAST(id AS VARCHAR) AS id,
+      CAST(application AS VARCHAR) AS application
+    FROM topdesk.topdesk.`AssetSoftwareDetailList`
+  ),
+
+  filtered_server AS (
+    SELECT
+      CAST(id AS VARCHAR) AS id,
+      CAST(objectid AS VARCHAR) AS objectid,
+      CAST(REPLACE(SUBSTR(creationDate, 1, 19), 'T', ' ') AS TIMESTAMP) AS parsed_creationDate
+    FROM topdesk.topdesk.`AssetServerList`
+    WHERE CAST(REPLACE(SUBSTR(creationDate, 1, 19), 'T', ' ') AS TIMESTAMP) >= TIMESTAMP '2025-01-01 00:00:00'
+  )
+
+
+SELECT 
+  s.id,
   MIN(
     COALESCE(
-      CAST(D.application AS VARCHAR),
-      CAST(S.name AS VARCHAR),
-      CAST(S.objectid AS VARCHAR)
+      d.application,
+      s.name,
+      s.objectid
     )
   ) AS applicatie
-FROM topdesk.topdesk.`AssetSoftwareList` S
-LEFT JOIN topdesk.topdesk.`AssetSoftwareDetailList` D
-  ON CAST(S.id AS VARCHAR) = CAST(D.id AS VARCHAR)
-GROUP BY S.id
+FROM filtered_software s
+LEFT JOIN filtered_detail d
+  ON s.id = d.id
+GROUP BY s.id
 
 UNION ALL
 
-SELECT 
-  CAST(id AS VARCHAR) AS id,
-  CAST(objectid AS VARCHAR) AS applicatie
-FROM topdesk.topdesk.`AssetServerList`
-)
+SELECT
+  id,
+  objectid AS applicatie
+FROM filtered_server;

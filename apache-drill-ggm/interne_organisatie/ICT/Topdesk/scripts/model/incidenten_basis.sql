@@ -29,20 +29,20 @@ FROM dfs.tmp.incidents_staging A
 
 -- IncidentDetails + IncidentTypes
 LEFT JOIN dfs.tmp.cte_incidenttypes B 
-  ON CAST(A.id AS VARCHAR) = B.id
+  ON CAST(A.id AS VARCHAR) = CAST(B.id AS VARCHAR)
 
 -- Applicaties
 LEFT JOIN dfs.tmp.cte_applicaties Z 
-  ON CAST(B.assetid AS VARCHAR) = Z.id 
+  ON CAST(B.assetid AS VARCHAR) = CAST(Z.id AS VARCHAR)
 
 -- Operators + OperatorGroups
 LEFT JOIN dfs.tmp.cte_operatoren O 
-  ON CAST(A.operatorid AS VARCHAR) = O.operator_id
+  ON CAST(A.operator_id AS VARCHAR) = CAST(O.operator_id AS VARCHAR)
 
 -- Categories + Subcategories
 LEFT JOIN dfs.tmp.cte_categories C 
-  ON CAST(A.category_id AS VARCHAR) = C.id
- AND CAST(A.subcategory_id AS VARCHAR) = C.id
+  ON CAST(A.category_id AS VARCHAR) = CAST(C.category_id AS VARCHAR)
+ AND CAST(A.subcategory_id AS VARCHAR) = CAST(C.subcategory_id AS VARCHAR)
 
 -- EntryTypes
 LEFT JOIN dfs.tmp.entrytypes H 
@@ -50,4 +50,4 @@ LEFT JOIN dfs.tmp.entrytypes H
 
 -- Suppliers + SupplierContracts
 LEFT JOIN dfs.tmp.cte_suppliers S 
-  ON CAST(A.operator_id AS VARCHAR) = S.operator_id;
+  ON CAST(A.operator_id AS VARCHAR) = CAST(S.operator_id AS VARCHAR);

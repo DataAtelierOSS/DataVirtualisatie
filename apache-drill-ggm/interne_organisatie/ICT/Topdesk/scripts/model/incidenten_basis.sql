@@ -29,7 +29,7 @@ FROM dfs.tmp.incidents_staging A
 
 -- IncidentDetails + IncidentTypes
 LEFT JOIN dfs.tmp.cte_incidenttypes B 
-  ON CAST(A.id AS VARCHAR) = CAST(B.id AS VARCHAR)
+  ON CAST(A.id AS VARCHAR) = CAST(B.incident_id AS VARCHAR)
 
 -- Applicaties
 LEFT JOIN dfs.tmp.cte_applicaties Z 

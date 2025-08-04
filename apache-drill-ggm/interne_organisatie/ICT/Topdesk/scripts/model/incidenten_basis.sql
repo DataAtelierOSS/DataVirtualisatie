@@ -20,10 +20,10 @@ SELECT
 
   -- Ontvangst & type melding
   COALESCE(H.name, 'Onbekend') AS ontvangst_via,
-  COALESCE(T.incidenttype_name, 'Onbekend') AS type_melding,
+  COALESCE(T.incidenttype_name, 'Onbekend') AS type_melding
 
   -- Leverancier
-  COALESCE(S.supplier_name, 'Onbekende leverancier') AS leverancier
+--  COALESCE(S.supplier_name, 'Onbekende leverancier') AS leverancier
 
 FROM dfs.tmp.incidents_staging A
 
@@ -53,5 +53,5 @@ LEFT JOIN dfs.tmp.entrytypes H
   ON CAST(A.entrytype_id AS VARCHAR) = CAST(H.id AS VARCHAR)
 
 -- Suppliers + SupplierContracts
-LEFT JOIN dfs.tmp.cte_suppliers S 
-  ON CAST(A.operator_id AS VARCHAR) = CAST(S.operator_id AS VARCHAR);
+--LEFT JOIN dfs.tmp.cte_suppliers S 
+--  ON CAST(A.operator_id AS VARCHAR) = CAST(S.operator_id AS VARCHAR);

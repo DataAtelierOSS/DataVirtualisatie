@@ -1,9 +1,9 @@
 CREATE OR REPLACE VIEW dfs.tmp.incidenten AS
 SELECT
   CAST(id AS VARCHAR) AS id,
-  CAST(REPLACE(REPLACE(SUBSTR(A.creationDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS aanmelddatum,
-  CAST(REPLACE(REPLACE(SUBSTR(A.completionDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS afmeldingsdatum,
-  CAST(REPLACE(REPLACE(SUBSTR(A.targetDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS streefdatum,
+  CAST(REPLACE(REPLACE(SUBSTR(creationDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS aanmelddatum,
+  CAST(REPLACE(REPLACE(SUBSTR(completionDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS afmeldingsdatum,
+  CAST(REPLACE(REPLACE(SUBSTR(targetDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS streefdatum,
   CAST(categoryId AS VARCHAR) AS category_id,
   CAST(subcategoryId AS VARCHAR) AS subcategory_id,
   CAST(operatorGroupId AS VARCHAR) AS operatorGroup_id,

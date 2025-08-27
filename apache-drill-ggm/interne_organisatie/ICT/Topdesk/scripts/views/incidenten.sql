@@ -1,9 +1,9 @@
-CREATE VIEW dfs.tmp.incidenten AS
+CREATE OR REPLACE VIEW dfs.tmp.incidenten AS
 SELECT
   CAST(id AS VARCHAR) AS id,
-  creationDate,
-  completionDate,
-  targetDate,
+  CAST(REPLACE(REPLACE(SUBSTR(creationDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS creationDate,
+  CAST(REPLACE(REPLACE(SUBSTR(completionDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS completionDate,
+  CAST(REPLACE(REPLACE(SUBSTR(targetDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) AS targetDate,
   CAST(categoryId AS VARCHAR) AS category_id,
   CAST(subcategoryId AS VARCHAR) AS subcategory_id,
   CAST(operatorGroupId AS VARCHAR) AS operatorGroup_id,
@@ -14,5 +14,4 @@ SELECT
   CAST(configurationItemId AS VARCHAR) AS config_item_id 
 FROM topdesk.topdesk.`Incidents`
 WHERE creationDate IS NOT NULL
-  AND SUBSTR(creationDate, 1, 4) BETWEEN '2000' AND '2100'
-  AND CAST(SUBSTR(creationDate, 1, 4) AS INT) >= CAST(SUBSTR(CURRENT_DATE, 1, 4) AS INT) - 3;
+  AND CAST(REPLACE(REPLACE(SUBSTR(creationDate, 1, 19), 'T', ' '), 'Z', '') AS TIMESTAMP) >= TIMESTAMPADD(YEAR, -3, CURRENT_DATE);

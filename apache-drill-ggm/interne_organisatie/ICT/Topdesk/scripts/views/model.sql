@@ -1,11 +1,11 @@
-CREATE VIEW dfs.tmp.vw_model AS
+CREATE OR REPLACE VIEW dfs.tmp.vw_model AS
 SELECT
   -- Incident basics
   CAST(B.incidentnumber AS VARCHAR) AS ticketnummer,
   COALESCE(CAST(B.briefDescription AS VARCHAR), 'Geen omschrijving') AS omschrijving,
-  A.creationDate AS aanmelddatum,
-  A.completionDate AS afmeldingsdatum,
-  A.targetDate AS streefdatum,
+  aanmelddatum,
+  afmeldingsdatum,
+  streefdatum,
 
   -- Applicatie info
   COALESCE(Z.applicatie, 'Onbekend/n.v.t.') AS applicatie,

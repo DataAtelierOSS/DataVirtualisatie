@@ -1,3 +1,4 @@
+--CREATE OR REPLACE VIEW dfs.tmp.voeghierquerynaamin AS
 WITH 
 SCHOOLLOOPBAAN_BASIS AS (
   SELECT  

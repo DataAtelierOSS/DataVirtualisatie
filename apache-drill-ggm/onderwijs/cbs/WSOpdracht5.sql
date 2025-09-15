@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE dfs.tmp.`vsv_gemeente_vs_nl` AS
+CREATE OR REPLACE VIEW dfs.tmp.`vsv_gemeente_vs_nl` AS
 SELECT 
   g.Perioden,
   g.VoortijdigSchoolverlatersPercentage_4 AS GemeentePerc,

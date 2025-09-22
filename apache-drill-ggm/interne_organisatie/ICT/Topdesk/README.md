@@ -4,6 +4,8 @@ Deze folder bevat alle bestanden en documentatie voor de Topdesk-integratie binn
 De implementatie volgt de principes van het **GGM** (Gemeentelijk Gegevensmodel),  
 maar richt zich primair op **incidenten en meldingen** als kernonderdelen.
 
+-Meer info: https://www.gemeentelijkgegevensmodel.nl/v2.4.0/domeinen/ict/
+
 ## Kenmerken
 
 - **Conform GGM**:  
